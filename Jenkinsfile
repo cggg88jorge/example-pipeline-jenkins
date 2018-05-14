@@ -2,16 +2,6 @@ pipeline {
   agent any
 
   stages {
-
-    stage('checkout') {
-      when {
-        branch 'master'
-      }
-      steps{
-        checkout scm
-      }
-    }
-
     stage('Build Release') {
       when {
         branch 'master'
