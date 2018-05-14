@@ -1,11 +1,26 @@
 pipeline {
-    agent any 
+  agent any
+  
+  stages {
 
-    stages {
-        stage('Build') { 
-            steps { 
-                echo "Aqui ando dando"
-            }
-        }
+    stage('Build Release') {
+      when {
+        branch 'master'
+      }
+      echo "Aqui ando perro"
     }
+
+    stage('Promote to Environments') {
+      when {
+        branch 'master'
+      }
+      echo "Aqui tambien"
+    }
+  }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
 }
